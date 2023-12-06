@@ -1,0 +1,14 @@
+<h1>Correction orthographique </h1>
+ <div>
+  <h2>Spell Checker</h2>
+  <textarea [(ngModel)]="textToCheck" (input)="onTextChanged()"placeholder="text to inser"></textarea>
+  <div *ngIf="errors && errors.length > 0">
+    <p>All Errors:</p>
+    <ul>
+      <li *ngFor="let error of errors">
+        <span [style.background]="'yellow'">{{ error }}</span>
+        <button *ngFor="let suggestion of getSuggestions(error)" (click)="replaceWord(error, suggestion)">Replace with {{ suggestion }}</button>
+      </li>
+    </ul>
+  </div>
+</div>
